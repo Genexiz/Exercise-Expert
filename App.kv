@@ -1,0 +1,142 @@
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+<BackgroundColor@Widget>
+    background_color: 1, 1, 1, 1
+    canvas.before:
+        Color:
+            rgba: root.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<BackgroundLabel@Label+BackgroundColor>
+    background_color: 0, 0, 0, 0
+
+<ScreenManager>:
+    id:screen_manager
+    ScreenApp:
+        name:"App_screen"
+<yApp>:
+    FloatLayout:
+        id:yAppOhyeah
+        size:root.width, root.height
+        GridLayout:
+            size:root.width, root.height
+            cols:2
+
+            padding:10
+            
+            FloatLayout:
+                size_hint:(.6,1)
+                Video:
+                    size_hint:(1,1)
+                    id:web_cam
+                    allow_stretch:True
+                    keep_ratio:True
+
+            
+                        
+
+            BoxLayout:
+                spacing:10
+                
+                size_hint:(.4,1)
+                
+                orientation:"vertical"
+
+                BackgroundLabel:
+                    id:name_pos
+                    size_hint:(1, .1)
+
+                    background_color:254/255, 255/255, 217/255, 1
+                    text:''
+                    padding_y:(self.height - self.line_height) / 2
+                    halign:"center"
+                    color:0,0,0,1
+                    font_size:48
+
+                Image:
+                    size_hint:(1,.7)
+                    id:img_ref
+                    source:''
+                    allow_stretch: True
+                    allow_ratio: False
+                    keep_ratio: False
+
+                BoxLayout:
+                    spacing:10
+                    
+                    size_hint:(1, .1)
+
+                    orientation:"horizontal"
+
+                    # TextInput:
+                    #     id:countdown_label
+                    #     size_hint:(.5,1)
+                    #     font_size:48
+                    #     hint_text:"minute:second"
+                    #     halign:'center'
+                    #     padding_y:(self.height - self.line_height) / 2
+                    #     color:0,0,0,1
+                    #     background_color:254/255, 255/255, 217/255, 1
+                    
+                    BackgroundLabel:
+                        id:countdown_label
+                        size_hint:(.5, 1)
+                        font_size:48
+                        halign:'center'
+                        padding_y:(self.height - self.line_height) / 2
+                        color:0,0,0,1
+                        background_color:254/255, 255/255, 217/255, 1
+
+                    BackgroundLabel:
+                        id:countdown_verify
+                        size_hint:(.4,1)
+                        font_size:32
+                        text:""
+                        color:0,0,0,1
+                        background_color:254/255, 255/255, 217/255, 1
+
+                    Button:
+                        size_hint:(.1,1)
+                        font_size:24
+                        text:"Reset"
+                        color:0,0,0,1
+                        background_color:255/255, 58/255, 58/255,1
+                        background_normal:''
+                        on_release:
+                            root.reset_everything()
+                
+                BoxLayout:
+                    size_hint:(1, .1)
+                    spacing:10
+
+                    BackgroundLabel:
+                        id:is_ok
+                        background_color:173/255,255/255,159/255,1
+                        color:0,0,0,1
+                        font_size:32
+                        text:"OK"
+                    Button:
+                        background_color:173/255,255/255,159/255,1
+                        background_normal:''
+                        color:0,0,0,1
+                        font_size:20
+                        size_hint:(.2,1)
+                        text:"<"
+                        on_release:
+                            root.previous_btn()
+                    Button:
+                        background_color:173/255,255/255,159/255,1
+                        background_normal:''
+                        color:0,0,0,1
+                        font_size:20
+                        size_hint:(.2,1)
+                        text:">"
+                        on_release:
+                            root.next_btn()
+
+
+        
+<ScreenApp>:
+    yApp:
+    

@@ -1,0 +1,86 @@
+<DialogContent>:
+    orientation: "vertical"
+    spacing: "5dp"
+    size_hint: 1, None
+    height: "260dp"
+
+    GridLayout:
+        rows: 2
+
+        MDTextField:
+            id: task_text
+            hint_text: "Add Your Pose Name..."
+            pos_hint: {"center_y": .4}
+            max_text_length: 15
+            on_text_validate: (app.add_task(task_text, pose_text.text), app.close_dialog())
+
+        #!Delete
+        MDIconButton:
+            icon: 'image'
+            on_release: root.show_img_directory()
+            padding: '10dp'
+
+
+        MDTextField:
+            id: time_text
+            hint_text: "minute:second"
+            pos_hint: {"center_y": .3}
+            max_text_length: 50
+
+    #!Delete
+    MDLabel:
+        spacing: '10dp'
+        id: pose_text
+
+    BoxLayout:
+        orientation: 'horizontal'
+
+        MDRaisedButton:
+            text: "SAVE"
+            on_release: (app.add_task(task_text, pose_text.text, time_text.text), app.close_dialog())
+        MDFlatButton:
+            text: 'CANCEL'
+            on_release: app.close_dialog()
+
+MDFloatLayout:
+    MDLabel:
+        id: task_label
+        halign: 'center'
+        markup: True
+        text: "[u][size=48][b]My Poses[/b][/size][/u]"
+        pos_hint: {'y': .45}
+
+    ScrollView:
+        pos_hint: {'center_y': .5, 'center_x': .5}
+        size_hint: .9, .8
+
+        MDList:
+            id: container
+
+    MDFloatingActionButton:
+        icon: 'plus-thick'
+        on_release: app.show_task_dialog() #functionality to be added later
+        elevation_normal: 12
+        pos_hint: {'x': .7, 'y':.05}
+
+    MDFloatingActionButton:
+        icon: 'arrow-right-bold-circle'
+        on_release: app.stop()
+        elevation_normal: 12
+        pos_hint: {'x': .85, 'y':.05}
+
+# add the following code
+<ListItemWithCheckbox>:
+    id: the_list_item
+    markup: True
+
+    ImageLeftWidget:
+        id:preview_image
+        source:''
+
+    IconRightWidget:
+        icon: 'trash-can-outline'
+        theme_text_color: "Custom"
+        text_color: 1, 0, 0, 1
+        on_release:
+            root.delete_item(the_list_item)
