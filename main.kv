@@ -37,9 +37,11 @@
 
         MDRaisedButton:
             text: "SAVE"
+            font_name: '3'
             on_release: (app.add_task(task_text, pose_text.text, time_text.text), app.close_dialog())
         MDFlatButton:
             text: 'CANCEL'
+            font_name: '3'
             on_release: app.close_dialog()
 
 MDFloatLayout:
@@ -48,6 +50,7 @@ MDFloatLayout:
         halign: 'center'
         markup: True
         text: "[u][size=48][b]My Poses[/b][/size][/u]"
+        font_name: '3'
         pos_hint: {'y': .45}
 
     ScrollView:

@@ -92,6 +92,7 @@ class MainApp(MDApp):
         self.theme_cls.primary_palette = "BlueGray"
         Window.size = (600, 600)
         self.title = "ExerciseExpert"
+        self.icon = '1.png'
         return
     # Add the below functions
     def show_task_dialog(self):

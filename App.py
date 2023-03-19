@@ -265,7 +265,7 @@ class CoolApp(App):
     def build(self):
         Window.clearcolor = (1, 1, 1, 1)
         Window.size = (Window.width, Window.height)
-
+        self.icon = '1.png'
         Window.maximize()
         return ScreenManager()
 

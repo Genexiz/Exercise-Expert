@@ -15,12 +15,13 @@ class SplashScreen(App):
     def build(self):
         layout = FloatLayout(size_hint=(1, 1))
         Window.maximize()
+        self.icon = '1.png'
         with layout.canvas.before:
             Color(*get_color_from_hex('EFEFE4'))
             self.rect = Rectangle(size=layout.size, pos=layout.pos)
 
         image = Image(source='./Image/logo.png', size_hint=(0.8, 0.8), pos_hint={'center_x': 0.3, 'center_y': 0.5}, color=(1, 1, 1, 0))
-        label = Label(text='ExerciseExpert', font_size='120px', color=[0, 0, 0, 0], pos_hint={'center_x': 0.6, 'center_y': 0.5})
+        label = Label(text='Loading. . .', font_size='80px',font_name = '3', color=[0, 0, 0, 0], pos_hint={'center_x': 0.57, 'center_y': 0.5})
 
         Clock.schedule_once(lambda dt: self.add_wid(layout=layout, image=image, label=label), 3)
         Clock.schedule_once(lambda dt: self.schedule_start_splash(label, image), 2)
