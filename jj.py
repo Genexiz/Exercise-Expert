@@ -20,8 +20,8 @@ class SplashScreen(App):
             Color(*get_color_from_hex('EFEFE4'))
             self.rect = Rectangle(size=layout.size, pos=layout.pos)
 
-        image = Image(source='1.png', size_hint=(0.8, 0.8), pos_hint={'center_x': 0.5, 'center_y': 0.5}, color=(1, 1, 1, 0))
-        label = Label(text='', font_size='80px', color=[0, 0, 0, 0], pos_hint={'center_x': 0.57, 'center_y': 0.5})
+        image = Image(source='1.png', size_hint=(0.8, 0.8), pos_hint={'center_x': 0.5, 'center_y': 0.9}, color=(1, 1, 1, 0))
+        label = Image(source='Ds.png', size_hint=(0.8, 0.8), pos_hint={'center_x': 0.5, 'center_y': 0.35}, color=(1, 1, 1, 0))
 
         Clock.schedule_once(lambda dt: self.add_wid(layout=layout, image=image, label=label), 3)
         Clock.schedule_once(lambda dt: self.schedule_start_splash(label, image), 2)
