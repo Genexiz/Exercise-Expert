@@ -6,7 +6,6 @@ from kivy.uix.image import Image
 from kivy.uix.floatlayout import FloatLayout
 from kivy.utils import get_color_from_hex
 from kivy.graphics import Color, Rectangle
-
 Window.size = (Window.width, Window.height)
 
 
